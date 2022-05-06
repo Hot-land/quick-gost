@@ -2,8 +2,11 @@
 
 ## 脚本
 
-  `wget --no-check-certificate -O gost.sh https://raw.githubusercontent.com/Hot-land/Multi-EasyGost/master/gost.sh && chmod +x gost.sh && ./gost.sh`  
+`wget --no-check-certificate -O gost.sh https://raw.githubusercontent.com/Hot-land/Multi-EasyGost/master/gost.sh && chmod +x gost.sh && ./gost.sh`  
 
+常用:
+
+`ulimit -S -n 4096`
 
 ***
 ## 感谢: 
