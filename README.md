@@ -4,4 +4,4 @@
 
 常用:
 
-`ulimit -S -n 4096`
+`ulimit -S -n 65535`
