@@ -92,29 +92,16 @@ function Install_ct() {
   check_file
   check_sys
   #check_new_ver
-  echo -e "若为国内机器建议使用大陆镜像加速下载"
-  read -e -p "是否使用？[y/n]:" addyn
-  [[ -z ${addyn} ]] && addyn="n"
-  if [[ ${addyn} == [Yy] ]]; then
-    rm -rf gost-linux-"$bit"-"$ct_new_ver".gz
-    wget --no-check-certificate https://gotunnel.oss-cn-shenzhen.aliyuncs.com/gost-linux-"$bit"-"$ct_new_ver".gz
-    gunzip gost-linux-"$bit"-"$ct_new_ver".gz
-    mv gost-linux-"$bit"-"$ct_new_ver" gost
-    mv gost /usr/bin/gost
-    chmod -R 777 /usr/bin/gost
-    wget --no-check-certificate https://gotunnel.oss-cn-shenzhen.aliyuncs.com/gost.service && chmod -R 777 gost.service && mv gost.service /usr/lib/systemd/system
-    mkdir /etc/gost && wget --no-check-certificate https://gotunnel.oss-cn-shenzhen.aliyuncs.com/config.json && mv config.json /etc/gost && chmod -R 777 /etc/gost
-  else
-    rm -rf gost-linux-"$bit"-"$ct_new_ver".gz
-    wget --no-check-certificate https://github.com/ginuerzh/gost/releases/download/v"$ct_new_ver"/gost-linux-"$bit"-"$ct_new_ver".gz
-    gunzip gost-linux-"$bit"-"$ct_new_ver".gz
-    mv gost-linux-"$bit"-"$ct_new_ver" gost
-    mv gost /usr/bin/gost
-    chmod -R 777 /usr/bin/gost
-    wget --no-check-certificate https://raw.githubusercontent.com/Hot-land/quick-gost/master/gost.service && chmod -R 777 gost.service && mv gost.service /usr/lib/systemd/system
-    mkdir /etc/gost && wget --no-check-certificate https://raw.githubusercontent.com/Hot-land/quick-gost/master/config.json && mv config.json /etc/gost && chmod -R 777 /etc/gost
-  fi
-
+  
+  rm -rf gost-linux-"$bit"-"$ct_new_ver".gz
+  wget --no-check-certificate https://github.com/ginuerzh/gost/releases/download/v"$ct_new_ver"/gost-linux-"$bit"-"$ct_new_ver".gz
+  gunzip gost-linux-"$bit"-"$ct_new_ver".gz
+  mv gost-linux-"$bit"-"$ct_new_ver" gost
+  mv gost /usr/bin/gost
+  chmod -R 777 /usr/bin/gost
+  wget --no-check-certificate https://raw.githubusercontent.com/Hot-land/quick-gost/master/gost.service && chmod -R 777 gost.service && mv gost.service /usr/lib/systemd/system
+  mkdir /etc/gost && wget --no-check-certificate https://raw.githubusercontent.com/Hot-land/quick-gost/master/config.json && mv config.json /etc/gost && chmod -R 777 /etc/gost
+  
   systemctl enable gost && systemctl restart gost
   echo "------------------------------"
   if test -a /usr/bin/gost -a /usr/lib/systemctl/gost.service -a /etc/gost/config.json; then
@@ -875,7 +862,7 @@ update_sh() {
   fi
 }
 
-update_sh
+#update_sh
 echo && echo -e "                 gost 一键安装配置脚本"${Red_font_prefix}[${shell_version}]${Font_color_suffix}"
   ----------- Hot-land -----------
   特性: (1)本脚本采用systemd及gost配置文件对gost进行管理
