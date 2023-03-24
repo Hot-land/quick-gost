@@ -101,9 +101,9 @@ function Install_ct() {
   chmod -R 777 /usr/bin/gost
   wget --no-check-certificate https://raw.githubusercontent.com/Hot-land/quick-gost/master/gost.service && chmod -R 777 gost.service && mv gost.service /usr/lib/systemd/system
   mkdir /etc/gost && wget --no-check-certificate https://raw.githubusercontent.com/Hot-land/quick-gost/master/config.json && mv config.json /etc/gost && chmod -R 777 /etc/gost
-  
-  /sbin/restorecon -v /usr/lib/systemd/system/gost.service
+
   /sbin/restorecon -v /usr/bin/gost
+  /sbin/restorecon -v /usr/lib/systemd/system/gost.service
   
   systemctl enable gost && systemctl restart gost
   echo "------------------------------"
